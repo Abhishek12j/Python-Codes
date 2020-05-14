@@ -1,0 +1,42 @@
+import random
+game=["s","w","g"]
+print("Select\n"+"s for Snake,", "w for Water,","g for Gun")
+print()
+print("Warning: Selecting any other will lead to playing losing that turn\n")
+comp=0
+player=0
+print("Enter your name:",end="")
+p_name=input()
+for i in range(1,6) :
+    print("Enter your choice for",i,"turn:",end="")
+    pl=input()
+    a=random.choice(game)
+    if pl in game:
+        print("Computer selected",a)
+        print()
+    else:
+        print("Computer won because of Invalid Entry\n")
+        comp+=1
+    if a=="s" :
+        if pl=="w" :
+            comp+=1
+        elif pl=="g" :
+            player+=1
+    elif a=="w" :
+        if pl=="s" :
+            player+=1
+        elif pl=="g" :
+            comp+=1
+    elif a=="g" :
+        if pl=="s" :
+            comp+=1
+        elif pl=="w" :
+            player+=1
+if comp>player :
+    print("Computer won")
+elif player>comp :
+    print(p_name,"won")
+else :
+    print("Nobody won")
+print("Computer Score:",comp)
+print(p_name,"Score:",player) 
